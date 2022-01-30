@@ -1,5 +1,5 @@
-*.o
-*.bin
-*.exe
-a.out
-build
+**.o
+**.bin
+**.exe
+*/a.out
+*/build
