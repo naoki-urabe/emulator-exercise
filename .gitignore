@@ -3,3 +3,5 @@
 **.exe
 */a.out
 */build
+*.asm
+/tolset_p86
