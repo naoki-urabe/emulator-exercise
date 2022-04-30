@@ -1,7 +1,7 @@
 TARGET = px86.exe
 OBJS = main.o emulator_function.o instruction.o modrm.c 
 Z_TOOLS = ../ z_tools
-CC = gcc
+CC = clang
 FORMAT = clang-format 
 CFLAGS += -Wall
 .PHONY : all 
