@@ -1,8 +1,6 @@
 **.o
 **.bin
 **.exe
-*/a.out
-*/build
-*.asm
+**a.out
+**px86
 /tolset_p86
-px86
