@@ -1,6 +1,5 @@
 TARGET = px86
-#OBJS = main.o emulator_function.o instruction.o modrm.c
-OBJS = main.o instruction.o
+OBJS = main.o emulator_function.o instruction.o modrm.c
 Z_TOOLS = ../z_tools
 
 CC = gcc
