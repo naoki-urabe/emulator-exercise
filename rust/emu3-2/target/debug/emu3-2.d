@@ -1,0 +1,1 @@
+/home/nao/work/emulator-exercise/rust/emu3-2/target/debug/emu3-2: /home/nao/work/emulator-exercise/rust/emu3-2/src/emulator.rs /home/nao/work/emulator-exercise/rust/emu3-2/src/instruction.rs /home/nao/work/emulator-exercise/rust/emu3-2/src/main.rs
