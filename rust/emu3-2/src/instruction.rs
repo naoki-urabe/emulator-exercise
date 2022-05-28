@@ -17,9 +17,15 @@ pub fn short_jump(emu: &mut Emulator) {
     emu.eip = ((emu.eip as i8) + (value + 2)) as u32;
 }
 
+pub fn near_jump(emu: &mut Emulator) {
+    let value = emu.get_sign_code32(1);
+    emu.eip = ((emu.eip as i32) + (value + 5)) as u32;
+}
+
 pub fn init_instructions(instructions: &mut Instruction) {
     for i in 0..8 {
         instructions[0xB8 + i] = Some(mov_r32_imm32);
     }
+    instructions[0xE9] = Some(near_jump);
     instructions[0xEB] = Some(short_jump);
 }

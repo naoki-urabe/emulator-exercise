@@ -33,8 +33,8 @@ fn main() {
     let mut buffer = Vec::new();
     reader.read_to_end(&mut buffer);
     let size = 1<<20;
-    let mut emu = emulator::create_emu(size,0x0000,0x7c00);
-    load_machine_code(&mut emu, 0x0000, buffer);
+    let mut emu = emulator::create_emu(size,0x7c00,0x7c00);
+    load_machine_code(&mut emu, 0x7c00, buffer);
     let mut instructions: Instruction =  [None; INSTRUCTIONS_COUNT];
     init_instructions(&mut instructions);
     while emu.eip < (size as u32) {
@@ -44,10 +44,8 @@ fn main() {
             Some(inst) => inst(&mut emu),
             None => {
                 println!("Not implemented");
-                break;
             }
         }
-        instructions[0xb8];
         if emu.eip == 0x00 {
             println!("end of program");
             break;

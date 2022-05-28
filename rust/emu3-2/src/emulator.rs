@@ -42,6 +42,9 @@ impl Emulator {
         }
         return value;
     }
+    pub fn get_sign_code32(&mut self, index:usize) -> i32 {
+        return (self.get_code32(index) as i32);
+    }
     pub fn set_register32(&mut self, reg: u32, value: u32) {
         self.registers[reg as usize] = value;
     }
