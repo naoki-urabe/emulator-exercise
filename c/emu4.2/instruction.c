@@ -6,6 +6,8 @@
 #include "emulator.h"
 #include "emulator_function.h"
 #include "instruction.h"
+#include "io.h"
+#include "bios.h"
 
 #include "modrm.h"
 
@@ -262,6 +264,18 @@ static void jle(Emulator* emu) {
   emu->eip += (diff + 2);
 }
 
+static void swi(Emulator* emu) {
+  uint8_t int_index = get_code8(emu, 1);
+  emu->eip += 2;
+  switch (int_index) {
+    case 0x10:
+      bios_video(emu);
+      break;
+    default:
+      printf("unknown interrupt: 0x%02x\n", int_index);
+  }
+}
+
 void init_instructions(void) {
   int i;
   memset(instructions, 0, sizeof(instructions));
@@ -312,6 +326,8 @@ void init_instructions(void) {
   instructions[0xC3] = ret;
   instructions[0xC7] = mov_rm32_imm32;
   instructions[0xC9] = leave;
+
+  instructions[0xCD] = swi;
 
   instructions[0xE8] = call_rel32;
   instructions[0xE9] = near_jump;
